@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #B5D435;
+  --color-brand-orange: #F5A623;
+  --color-brand-dark: #1A1A1A;
+  --color-brand-light: #F9F9F9;
+  --color-brand-card: #FFFFFF;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    background-color: var(--color-brand-light);
+  }
+}
+
+.diagonal-stripes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    rgba(0, 0, 0, 0.04) 20px,
+    rgba(0, 0, 0, 0.04) 40px
+  );
+  pointer-events: none;
+}
