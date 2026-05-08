@@ -97,11 +97,11 @@ const doughnutOptions = {
 }
 
 const lineData = {
-  labels: ['2014', '2016', '2018', '2020', '2022', '2024'],
+  labels: ['2014', '2016', '2018', '2020', '2022', '2024', '2026', '2028', '2030'],
   datasets: [
     {
-      label: '% de pacientes',
-      data: [9.1, 16.0, 24.0, 35.0, 44.0, 51.0],
+      label: '% pacientes (real)',
+      data: [9.1, 16.0, 24.0, 35.0, 44.0, 51.0, null, null, null],
       borderColor: '#F5A623',
       backgroundColor: 'rgba(245,166,35,0.12)',
       borderWidth: 3,
@@ -112,7 +112,58 @@ const lineData = {
       tension: 0.35,
       fill: true,
     },
+    {
+      label: 'Proyección',
+      data: [null, null, null, null, null, 51.0, 56.0, 61.0, 65.0],
+      borderColor: '#F5A623',
+      backgroundColor: 'transparent',
+      borderWidth: 2,
+      borderDash: [6, 4],
+      pointRadius: 4,
+      pointBackgroundColor: '#fff',
+      pointBorderColor: '#F5A623',
+      pointBorderWidth: 2,
+      tension: 0.35,
+      fill: false,
+    },
   ],
+}
+
+const ageData = {
+  labels: ['2016', '2025'],
+  datasets: [
+    {
+      label: 'Adolescentes 12–17 años',
+      data: [6.2, 4.1],
+      backgroundColor: '#B5D435',
+      borderRadius: 4,
+    },
+    {
+      label: 'Población general 12–65 años',
+      data: [9.9, 13.1],
+      backgroundColor: '#F5A623',
+      borderRadius: 4,
+    },
+  ],
+}
+
+const ageOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: { position: 'top' },
+    title: {
+      display: true,
+      text: 'Consumo de drogas ilegales por grupo de edad',
+      font: { size: 12 },
+    },
+  },
+  scales: {
+    y: {
+      max: 20,
+      ticks: { callback: (v) => v + '%' },
+    },
+  },
 }
 
 const lineOptions = {
@@ -183,7 +234,7 @@ function StatsSection() {
         </p>
 
         {/* Charts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
           <div className="bg-brand-card rounded-2xl shadow-md p-6">
             <h3 className="font-body text-sm font-semibold text-brand-dark mb-4 uppercase tracking-wide">
               Consumo de drogas ilegales en México
@@ -204,10 +255,19 @@ function StatsSection() {
 
           <div className="bg-brand-card rounded-2xl shadow-md p-6">
             <h3 className="font-body text-sm font-semibold text-brand-dark mb-4 uppercase tracking-wide">
-              Metanfetamina en centros de rehabilitación
+              Metanfetamina en centros de rehabilitación + proyección
             </h3>
             <div className="h-64">
               <Line data={lineData} options={lineOptions} />
+            </div>
+          </div>
+
+          <div className="bg-brand-card rounded-2xl shadow-md p-6">
+            <h3 className="font-body text-sm font-semibold text-brand-dark mb-4 uppercase tracking-wide">
+              Drogas ilegales por grupo de edad
+            </h3>
+            <div className="h-64">
+              <Bar data={ageData} options={ageOptions} />
             </div>
           </div>
         </div>

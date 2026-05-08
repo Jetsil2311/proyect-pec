@@ -4,7 +4,7 @@ function HeaderBanner() {
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-24 md:py-32">
         <img
           src="/logo.png"
-          alt="Logo"
+          alt="Logo CECYTEM"
           className="h-24 md:h-32 w-auto mb-8 drop-shadow-md"
         />
         <h1 className="font-display text-5xl md:text-7xl font-black leading-tight">
